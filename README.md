@@ -2,6 +2,9 @@
 
 This Windows Form allow to show notification of Success, Info, Warning, Error.
 
+![c-sharp-notification](https://github.com/pasqualeambrosio/C-Sharp-Notify/blob/main/c-sharp-notification.png)
+
+
 ### Example 1
 Notification of success.
 Notification stay opened.
