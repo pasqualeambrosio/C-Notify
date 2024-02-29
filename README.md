@@ -43,7 +43,7 @@ Notify.Open(new Notify.NotifyOptions
 	OnNotifyClosed = ErrorNotifyClosed
 });
 
-private void SuccessNotifyClosed(object sender, Notify.NotifyArgs e)
+private void ErrorNotifyClosed(object sender, Notify.NotifyArgs e)
 {
 	MessageBox.Show("Error closed");
 }
