@@ -14,9 +14,22 @@ Notify.Open(new Notify.NotifyOptions
 	NotifyType = Notify.NotifyType.Success
 });
 ```
+
 ### Example 2
-Notification of error with autoclose after 2 seconds.
+Notification of warning.
 To close notification must click on close icon.
+
+```csharp
+Notify.Open(new Notify.NotifyOptions
+{
+	Message = "WARNING" + Environment.NewLine + "File not found!",
+	NotifyType = Notify.NotifyType.Warning,
+	ClickToClose = false
+});
+```
+
+### Example 3
+Notification of error with autoclose after 2 seconds with event on closing.
 
 ```csharp
 Notify.Open(new Notify.NotifyOptions
@@ -24,7 +37,6 @@ Notify.Open(new Notify.NotifyOptions
 	Message = "ERROR" + Environment.NewLine + "Data not found",
 	AutoHideDelay = 2000,
 	NotifyType = Notify.NotifyType.Error,
-	ClickToClose = false,
 	OnNotifyClosed = ErrorNotifyClosed
 });
 
