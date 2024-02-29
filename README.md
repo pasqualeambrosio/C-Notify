@@ -22,8 +22,14 @@ To close notification must click on close icon.
 Notify.Open(new Notify.NotifyOptions
 {
 	Message = "ERROR" + Environment.NewLine + "Data not found",
-  AutoHideDelay = 2000,
+	AutoHideDelay = 2000,
 	NotifyType = Notify.NotifyType.Error,
-	ClickToClose = false
+	ClickToClose = false,
+	OnNotifyClosed = ErrorNotifyClosed
 });
+
+private void SuccessNotifyClosed(object sender, Notify.NotifyArgs e)
+{
+	MessageBox.Show("Error closed");
+}
 ```
