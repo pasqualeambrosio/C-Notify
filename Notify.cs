@@ -66,9 +66,7 @@ namespace CustomNotify
         /// <summary>
         /// Open notification
         /// </summary>
-        /// <param name="message">Message to show</param>
-        /// <param name="typeNotify">Type of notification</param>
-        /// <param name="autoHideDelay">autoclose notification in ms</param>
+        /// <param name="notifyOptions"></param>
         public static void Open(NotifyOptions notifyOptions)
         {
             try
