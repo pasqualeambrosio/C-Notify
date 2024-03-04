@@ -31,10 +31,17 @@ namespace CustomNotify
             Error
         }
 
+        public enum NotifyPosition
+        {
+            BottomLeft,
+            BottomRight
+        }
+
         public class NotifyOptions
         {
             public string Message { get; set; }
-            public NotifyType NotifyType { get; set; }
+            public NotifyType NotifyType { get; set; } = NotifyType.Success;
+            public NotifyPosition NotifyPosition { get; set; } = NotifyPosition.BottomRight;
             public int AutoHideDelay { get; set; }
             public int Gap { get; set; } = 5;
             public bool ClickToClose { get; set; } = true;
@@ -107,8 +114,18 @@ namespace CustomNotify
                         break;
                 }
 
-                f.Left = Screen.PrimaryScreen.WorkingArea.Width - f.Width - 1;
-                f.Top = Screen.PrimaryScreen.WorkingArea.Height - f.Height * openedNotify - f.notifyOption.Gap * openedNotify;
+                switch (notifyOptions.NotifyPosition)
+                {
+                    case NotifyPosition.BottomRight:
+                        f.Left = Screen.PrimaryScreen.WorkingArea.Width - f.Width - 1;
+                        f.Top = Screen.PrimaryScreen.WorkingArea.Height - f.Height * openedNotify - f.notifyOption.Gap * openedNotify;
+                        break;
+
+                    case NotifyPosition.BottomLeft:
+                        f.Left = 1;
+                        f.Top = Screen.PrimaryScreen.WorkingArea.Height - f.Height * openedNotify - f.notifyOption.Gap * openedNotify;
+                        break;
+                }
                 f.Location = new Point(f.Left, f.Top);
 
                 if (f.notifyOption.AutoHideDelay != 0)
@@ -155,7 +172,7 @@ namespace CustomNotify
         private void Notify_FormClosing(object sender, FormClosingEventArgs e)
         {
             openedNotify--;
-            
+
             try
             {
                 int counter = 0;
@@ -164,8 +181,19 @@ namespace CustomNotify
                     counter++;
                     int id = int.Parse(f.Name.Replace("frmNotify_", ""));
 
-                    f.Left = Screen.PrimaryScreen.WorkingArea.Width - f.Width - 1;
-                    f.Top = Screen.PrimaryScreen.WorkingArea.Height - f.Height * counter - ((Notify)f).notifyOption.Gap * counter;
+                    switch (((Notify)f).notifyOption.NotifyPosition)
+                    {
+                        case NotifyPosition.BottomRight:
+                            f.Left = Screen.PrimaryScreen.WorkingArea.Width - f.Width - 1;
+                            f.Top = Screen.PrimaryScreen.WorkingArea.Height - f.Height * counter - ((Notify)f).notifyOption.Gap * counter;
+                            break;
+
+                        case NotifyPosition.BottomLeft:
+                            f.Left = 1;
+                            f.Top = Screen.PrimaryScreen.WorkingArea.Height - f.Height * counter - ((Notify)f).notifyOption.Gap * counter;
+                            break;
+                    }
+
                     f.Location = new Point(f.Left, f.Top);
                 });
             }
