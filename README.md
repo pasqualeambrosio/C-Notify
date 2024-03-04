@@ -14,7 +14,8 @@ Click everywhere to close.
 Notify.Open(new Notify.NotifyOptions
 {
 	Message = "Success!",
-	NotifyType = Notify.NotifyType.Success
+	NotifyType = Notify.NotifyType.Success,
+	NotifyPosition = Notify.NotifyPosition.BottomLeft
 });
 ```
 
