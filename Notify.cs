@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -86,6 +86,7 @@ namespace CustomNotify
                 f.Name = "frmNotify_" + openedNotify;
                 f.lblMessage.ForeColor = Color.White;
                 f.lblMessage.Text = f.notifyOption.Message;
+                f.toolTip1.SetToolTip(f.lblMessage, f.notifyOption.Message);
                 f.lblTime.Text = DateTime.Now.ToString("HH:mm");
 
                 if (f.notifyOption.OnNotifyClosed != null)
